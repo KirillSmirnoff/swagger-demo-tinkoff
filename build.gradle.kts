@@ -14,12 +14,18 @@ group = "ru.k2"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
+configurations {
+	all {
+		exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging")
+	}
+}
+
 /*OpenApi Generator*/
 openApiGenerate {
 	generatorName.set("kotlin-spring")
 //	httpUserAgent.set("restTemplate")
-	inputSpec.set("$projectDir/src/main/resources/openapi/openapi.yml")
-	outputDir.set("$rootDir/specification")
+	inputSpec.set("$projectDir/src/main/resources/openapi/mk/openapi.yml")
+	outputDir.set("$rootDir")
 	apiPackage.set("ru.k2.swaggerdemotinkoff.api")
 //	invokerPackage.set("ru.k2.swaggerdemotinkoff.invoker")
 	modelPackage.set("ru.k2.swaggerdemotinkoff.model")
