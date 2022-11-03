@@ -14,11 +14,6 @@ group = "ru.k2"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
-configurations {
-	all {
-		exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging")
-	}
-}
 
 /*OpenApi Generator*/
 openApiGenerate {
@@ -35,7 +30,7 @@ openApiGenerate {
 	configOptions.put("dateLibrary", "java8")
 	configOptions.put("delegatePattern", "true")
 //	configOptions.put("gradleBuildFile", "true")
-	configOptions.put("serverPort", "8085")
+//	configOptions.put("serverPort", "8085")
 }
 
 repositories {
@@ -49,7 +44,9 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	/*OpenApi Generator*/
-	implementation("org.openapitools:openapi-generator-gradle-plugin:5.4.0")
+	implementation("org.openapitools:openapi-generator-gradle-plugin:5.4.0"){
+		exclude(group = "org.slf4j", module = "slf4j-simple") // org.slf4j:slf4j-simple
+	}
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -59,6 +56,15 @@ tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "11"
+	}
+}
+
+tasks.openApiGenerate {
+	doLast{
+		delete(
+				"$rootDir/.openapi-generator",
+				"$rootDir/src/main/kotlin/org"
+		)
 	}
 }
 

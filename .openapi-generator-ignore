@@ -11,6 +11,7 @@ build.gradle.kts
 pom.xml
 README.md
 settings.gradle
+src/main/resources/application.yaml
 
 # You can match any string of characters against a directory, file or extension with a single asterisk (*):
 #foo/*/qux
