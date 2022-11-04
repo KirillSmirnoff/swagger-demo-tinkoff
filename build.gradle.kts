@@ -61,9 +61,20 @@ tasks.withType<KotlinCompile> {
 
 tasks.openApiGenerate {
 	doLast{
+
+//		/* переносит сгенерированные фалы из java подкаталога в подкаталог kotlin */
+//		copy {
+//			from("$rootDir/src/main/java/ru/k2/swaggerdemotinkoff")
+//			into("$rootDir/src/main/kotlin/ru/k2/swaggerdemotinkoff")
+//		}
+
+		/* удаляет лишние папки, которые были сгенерированы */
 		delete(
 				"$rootDir/.openapi-generator",
-				"$rootDir/src/main/kotlin/org"
+				"$rootDir/src/main/kotlin/org",
+//				"$rootDir/src/main/java/org"
+//				,
+//				"$rootDir/src/main/java"
 		)
 	}
 }
