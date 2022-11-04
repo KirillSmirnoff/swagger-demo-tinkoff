@@ -12,16 +12,9 @@ import java.util.UUID
 @Service
 class PaymentsStatusService : PaymentsStatusApiDelegate{
 
-//        override fun postPaymentsStatus(paymentStatusRequest: PaymentStatusRequest?): ResponseEntity<RelatedResponse> {
-//        return ResponseEntity(RelatedResponse()
-//                .correllationID(paymentStatusRequest?.messageID)
-//                .messageID(UUID.randomUUID().toString())
-//                .errorMessage("Test of classes generated via OpenApi completed successfully")
-//                .errorCode("200"), HttpStatus.OK)
-//    }
     override fun postPaymentsStatus(paymentStatusRequest: PaymentStatusRequest): ResponseEntity<RelatedResponse> {
         return ResponseEntity(
                 RelatedResponse(UUID.randomUUID().toString(), paymentStatusRequest.messageID,
-                        "200", "Test of classes generated via OpenApi completed successfully"), HttpStatus.OK)
+                        "200", "Test of kotlin classes generated via OpenApi completed successfully"), HttpStatus.OK)
     }
 }

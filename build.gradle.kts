@@ -18,19 +18,12 @@ java.sourceCompatibility = JavaVersion.VERSION_11
 /*OpenApi Generator*/
 openApiGenerate {
 	generatorName.set("kotlin-spring")
-//	httpUserAgent.set("restTemplate")
 	inputSpec.set("$projectDir/src/main/resources/openapi/mk/openapi.yml")
 	outputDir.set("$rootDir")
 	apiPackage.set("ru.k2.swaggerdemotinkoff.api")
-//	invokerPackage.set("ru.k2.swaggerdemotinkoff.invoker")
 	modelPackage.set("ru.k2.swaggerdemotinkoff.model")
-	groupId.set("ru.k2")
-	id.set("swagger-tinkoff")
-	version.set("0.0.10")
 	configOptions.put("dateLibrary", "java8")
 	configOptions.put("delegatePattern", "true")
-//	configOptions.put("gradleBuildFile", "true")
-//	configOptions.put("serverPort", "8085")
 }
 
 repositories {
@@ -61,20 +54,10 @@ tasks.withType<KotlinCompile> {
 
 tasks.openApiGenerate {
 	doLast{
-
-//		/* переносит сгенерированные фалы из java подкаталога в подкаталог kotlin */
-//		copy {
-//			from("$rootDir/src/main/java/ru/k2/swaggerdemotinkoff")
-//			into("$rootDir/src/main/kotlin/ru/k2/swaggerdemotinkoff")
-//		}
-
 		/* удаляет лишние папки, которые были сгенерированы */
 		delete(
 				"$rootDir/.openapi-generator",
 				"$rootDir/src/main/kotlin/org",
-//				"$rootDir/src/main/java/org"
-//				,
-//				"$rootDir/src/main/java"
 		)
 	}
 }
