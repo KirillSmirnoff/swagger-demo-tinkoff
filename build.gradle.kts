@@ -24,6 +24,7 @@ openApiGenerate {
 	modelPackage.set("ru.k2.swaggerdemotinkoff.model")
 	configOptions.put("dateLibrary", "java8")
 	configOptions.put("delegatePattern", "true")
+	configOptions.put("unhandledException", "true")
 }
 
 repositories {
