@@ -8,3 +8,30 @@ spring:
 
 server:
   port: 8084
+
+
+logbook:
+#  include:
+#    - /api/**
+#    - /actuator/**
+#  exclude:
+#    - /actuator/health
+#    - /api/admin/**
+  filter.enabled: true
+  secure-filter.enabled: true
+  format.style: http
+#  strategy: body-only-if-status-at-least
+  minimum-status: 400
+#  obfuscate:
+#    headers:
+#      - Authorization
+#      - X-Secret
+#    parameters:
+#      - access_token
+#      - password
+  write:
+    chunk-size: 1000
+
+logging:
+  level:
+    org.zalando.logbook: TRACE

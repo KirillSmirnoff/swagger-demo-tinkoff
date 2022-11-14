@@ -10,6 +10,11 @@ group = "ru.k2"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
+configurations{
+	all{
+		exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging")
+	}
+}
 
 /*OpenApi Generator*/
 openApiGenerate {
@@ -45,6 +50,10 @@ dependencies {
 
 	/*OTHER*/
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	implementation("org.zalando:logbook-spring-boot-starter:2.14.0")
+	implementation("org.springframework.boot:spring-boot-starter-log4j2")
+
+
 }
 
 tasks {
