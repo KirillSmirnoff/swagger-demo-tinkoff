@@ -23,6 +23,7 @@ openApiGenerate {
 	outputDir.set("$rootDir")
 	apiPackage.set("ru.k2.swaggerdemotinkoff.api")
 	modelPackage.set("ru.k2.swaggerdemotinkoff.model")
+	templateDir.set("$projectDir/src/main/resources/openapi/templates")
 	configOptions.put("dateLibrary", "java8")
 	configOptions.put("delegatePattern", "true")
 	configOptions.put("unhandledException", "true")
@@ -35,6 +36,7 @@ repositories {
 dependencies {
 	/*WEB*/
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 
 	/*DATA*/
 //	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
